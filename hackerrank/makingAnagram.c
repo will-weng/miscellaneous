@@ -1,3 +1,6 @@
+// given two strings, prints how many letters to remove from all inputs
+// before there is a possible anagram between string
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
