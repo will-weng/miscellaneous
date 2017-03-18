@@ -13,17 +13,18 @@ void findSubString() {
     do
     { 
         c = getchar();
-        printf("%c", c);
-        if(alphabet[c - 'a'] == 0) alphabet[c - 'a']++;
+        if(c != '\n') 
+            if(alphabet[c - 'a'] == 0) 
+                alphabet[c - 'a']++;
     } while(c != '\n');
         
     do
     { 
         c = getchar();
-        if(c != '\n' || c != EOF) 
+        if(c != '\n' && c != EOF) 
             if(alphabet[c - 'a'] == 1)
                 alphabet[c - 'a']++;
-    } while(c != '\n' || c != EOF);
+    } while(c != '\n' && c != EOF);
     
     int i = 0;
     
@@ -32,12 +33,10 @@ void findSubString() {
         if (alphabet[i] > 1)
         {    
             printf("YES\n");
-            break;
+            return;
         }
-        else
-            printf("NO\n");
     }
-    
+    printf("NO\n");
     return;
 }
 
