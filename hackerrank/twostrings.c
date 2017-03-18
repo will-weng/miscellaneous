@@ -1,32 +1,54 @@
+// given pairs of strings, find if there is common substrings
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
 
-int main() {
-    int numPairs, i = 0;
-    int alphabet[26] = {0};
-    scanf("%d", &numPairs);
-    char c;
-    scanf("%c", &c);
 
-    for(i = 0; i < numPairs; ++i)
+void findSubString() {
+    int alphabet[26] = {0}, flag = 0;
+    char c;
+    
+    do
+    { 
+        c = getchar();
+        printf("%c", c);
+        if(alphabet[c - 'a'] == 0) alphabet[c - 'a']++;
+    } while(c != '\n');
+        
+    do
+    { 
+        c = getchar();
+        if(c != '\n' || c != EOF) 
+            if(alphabet[c - 'a'] == 1)
+                alphabet[c - 'a']++;
+    } while(c != '\n' || c != EOF);
+    
+    int i = 0;
+    
+    for(i = 0; i < 26; i++) 
     {
-        for(i = 0; c != '\n'; ++i)
-        {
-            alphabet[c - 'a']++;
-            scanf("%c", &c);
+        if (alphabet[i] > 1)
+        {    
+            printf("YES\n");
+            break;
         }
-        for(i = 0; c != '\n'; ++i)
-        {   
-            if(alphabet[c - 'a'] != 0) {
-                printf("YES\n");
-                break;
-            } else {
-                printf("NO\n");
-            }
-            scanf("%c", &c);
-        }
+        else
+            printf("NO\n");
+    }
+    
+    return;
+}
+
+int main() {
+    int num_of_pairs = 0;
+    scanf("%d ", &num_of_pairs);
+    
+    while(num_of_pairs > 0)
+    {
+        findSubString();
+        num_of_pairs--;
     }
     return 0;
 }
